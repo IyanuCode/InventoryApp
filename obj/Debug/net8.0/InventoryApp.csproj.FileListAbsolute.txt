@@ -12,3 +12,4 @@ C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\refin
 C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\InventoryApp.pdb
 C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\InventoryApp.genruntimeconfig.cache
 C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\ref\InventoryApp.dll
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\InventoryApp.sourcelink.json

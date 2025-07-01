@@ -22,12 +22,13 @@ namespace InventoryApp
         private const string filePath = "products.txt";
         private const string filePath2 = "products.csv";
 
-        // Entry point of the application
+       
         public static void Main(string[] args)
         {
             RunMenuLoop();
         }
-        // Method to run the menu loop
+
+        /*-----------------------------------------Run Menu Loop Method-----------------------------------------*/
         private static void RunMenuLoop()
         {
             while (true)
@@ -69,7 +70,10 @@ namespace InventoryApp
                 }
             }
         }
-        // Method to add a product
+       /*-----------------------------------------End of Run Menu Loop Method-----------------------------------------*/
+        
+        
+        /*-----------------------------------------Add Product Method-----------------------------------------*/
         private static void AddProduct()
         {
             Console.Clear();
@@ -78,7 +82,7 @@ namespace InventoryApp
             Console.Write("Enter product name: ");
             string? name = Console.ReadLine()?.Trim();
 
-            if (string.IsNullOrWhiteSpace(name) && name.Length > 2)
+            if (string.IsNullOrWhiteSpace(name) && name.Length < 2)
             {
                 Console.WriteLine("Product name must be at least 3 characters long and cannot be empty.");
                 return;
@@ -112,11 +116,9 @@ namespace InventoryApp
 
             product.SerialNumber = GenerateSerialNumber();
 
-            Console.WriteLine($"price: ₦{product.Price}, \n quantity: {product.Quantity}, \n serial number: {product.SerialNumber}");
+            Console.WriteLine($" price: ₦{product.Price}, \n quantity: {product.Quantity}, \n serial number: {product.SerialNumber}");
             products.Add(product);
             Console.WriteLine("Product added successfully!");
-            Console.WriteLine("Press any key to continue...");
-
             WriteToFile();
 
             Console.WriteLine("Press any key to return to the menu.");
@@ -147,12 +149,12 @@ namespace InventoryApp
             else
             {
                 Console.WriteLine("Available Products:\n");
-                 Console.WriteLine( $"{ "Serial",-15} | { "Name",-25} | { "Qty",-5} | { "Price",-10}");
-                 Console.WriteLine(new string('-', 65));
+                 Console.WriteLine($"{ "Name",-25}|{ "Qty",-10}|{ "Price",-15}|{ "Serial",-20}");
+                Console.WriteLine(new string('-', 75));
+                 
                 foreach (var product in products)
                 {
-                    Console.WriteLine($"Name: {product.Name,-25}, Quantity: {product.Quantity, -5}, Price: ₦{product.Price, -10:N2}, Serial Number: {product.SerialNumber, -15}");
-                }
+                    Console.WriteLine($"{product.Name,-25}|{product.Quantity,-10}|{product.Price,-15:C}|{product.SerialNumber,-20}");                }
             }
             MenuOption();
         }
@@ -162,33 +164,56 @@ namespace InventoryApp
 
         /*-----------------------------------------Load from file-----------------------------------------*/
         private static void LoadFromFile()
+{
+    products.Clear();
+
+    if (!File.Exists(filePath)) return;
+
+    string[] lines = File.ReadAllLines(filePath);
+    int startIndex = 0;
+
+   
+    if (lines[0].StartsWith("Serial"))
+    {
+        startIndex = (lines.Length > 1 && lines[1].StartsWith("-")) ? 2 : 1;
+    }
+
+    for (int i = startIndex; i < lines.Length; i++)
+    {
+        if (string.IsNullOrWhiteSpace(lines[i]))
+            continue; 
+
+        string[] parts = lines[i].Split('|').Select(p => p.Trim()).ToArray();
+
+        if (parts.Length >= 4)
         {
-            products.Clear(); 
+            string rawPrice = parts[3].Replace("₦", "").Replace(",", "").Trim();
 
-        if (File.Exists(filePath2))
-        {
-        string[] lines = File.ReadAllLines(filePath);
-
-        
-        int startIndex = lines[0].StartsWith("Serial") ? 1 : 0;
-
-        for (int i = startIndex; i < lines.Length; i++)
-        {
-            string[] parts = lines[i].Split(',');
-
-            if (parts.Length == 4)
+            if (decimal.TryParse(rawPrice,
+                System.Globalization.NumberStyles.AllowDecimalPoint | System.Globalization.NumberStyles.AllowThousands,
+                System.Globalization.CultureInfo.InvariantCulture,
+                out decimal parsedPrice))
             {
                 products.Add(new Product
                 {
                     SerialNumber = parts[0].Trim('"'),
                     Name = parts[1].Trim('"'),
                     Quantity = int.Parse(parts[2]),
-                    Price = decimal.Parse(parts[3])
+                    Price = parsedPrice
                 });
             }
+            else
+            {
+                Console.WriteLine($" Could not parse price from line: '{parts[3]}'");
+            }
+        }
+        else
+        {
+            Console.WriteLine($" Skipping line due to invalid structure: {lines[i]}");
         }
     }
 }
+
 
         
         /* ------------------------------------------End of Load from file-----------------------------------------*/
