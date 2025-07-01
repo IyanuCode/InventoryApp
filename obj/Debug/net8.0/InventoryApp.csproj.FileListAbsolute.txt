@@ -1,0 +1,14 @@
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\bin\Debug\net8.0\InventoryApp.exe
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\bin\Debug\net8.0\InventoryApp.deps.json
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\bin\Debug\net8.0\InventoryApp.runtimeconfig.json
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\bin\Debug\net8.0\InventoryApp.dll
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\bin\Debug\net8.0\InventoryApp.pdb
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\InventoryApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\InventoryApp.AssemblyInfoInputs.cache
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\InventoryApp.AssemblyInfo.cs
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\InventoryApp.csproj.CoreCompileInputs.cache
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\InventoryApp.dll
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\refint\InventoryApp.dll
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\InventoryApp.pdb
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\InventoryApp.genruntimeconfig.cache
+C:\Users\Iyanu\Documents\C#_Projects\VS code\InventoryApp\obj\Debug\net8.0\ref\InventoryApp.dll
